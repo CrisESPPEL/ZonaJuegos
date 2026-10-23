@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTituloPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GameZone"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <EditText
+        android:id="@+id/etTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del videojuego"
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/etGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Género: aventura, carreras..."
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/etPlataforma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Plataforma: PC, PlayStation..."
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Añadir videojuego" />
+
+    <Button
+        android:id="@+id/btnAcercaDe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acerca de" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mi biblioteca"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVideojuegos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

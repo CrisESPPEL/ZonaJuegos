@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detalles del videojuego"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <ImageView
+        android:id="@+id/ivPortada"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@android:drawable/ic_media_play"
+        android:contentDescription="Imagen del videojuego"
+        android:scaleType="centerInside"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/tvDetalleTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tvDetalleGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Género"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvDetallePlataforma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Plataforma"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:id="@+id/btnVolverDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver" />
+
+</LinearLayout>
