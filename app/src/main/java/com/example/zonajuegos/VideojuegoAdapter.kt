@@ -20,11 +20,12 @@ class VideojuegoAdapter (
         init {
             itemView.setOnClickListener {
                 val posicion = bindingAdapterPosition
+
+                if(posicion != RecyclerView.NO_POSITION) {
+                    onItemClick(videojuegos[posicion])
+                }
             }
 
-            if(posicion != RecyclerView.NO_POSITION) {
-                onItemClick(videojuegos[posicion])
-            }
         }
 
     }
@@ -42,10 +43,7 @@ class VideojuegoAdapter (
     }
 
     //
-    override fun onBindViewHolder(
-        holder: VideojuegoViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: VideojuegoViewHolder, posicion: Int) {
         val videojuego = videojuegos[posicion]
 
         holder.tvTitulo.text = videojuego.titulo

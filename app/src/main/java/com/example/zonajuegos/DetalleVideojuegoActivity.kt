@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class DetalleVideojuegoActivity : AppCompatActivity {
+class DetalleVideojuegoActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_TITULO = "extra_titulo"
@@ -15,6 +15,7 @@ class DetalleVideojuegoActivity : AppCompatActivity {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_detalle_videojuego)
