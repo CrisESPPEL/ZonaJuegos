@@ -3,27 +3,45 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
     android:padding="12dp"
     android:layout_marginBottom="6dp"
-    android:background="?android:attr/selectableItemBackground"
+    android:background="@drawable/fondo_tarjeta"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    >
 
-    <TextView
-        android:id="@+id/tvTituloItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Título del videojuego"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/ivIconoItem"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@android:drawable/ic_menu_help"
+        android:contentDescription="Icono de categoría"
+        android:layout_marginEnd="12dp" />
 
-    <TextView
-        android:id="@+id/tvDescripcionItem"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Género · Plataforma"
-        android:textSize="14sp"
-        android:layout_marginTop="4dp" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTituloItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título del videojuego"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDescripcionItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Género · Plataforma"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -19,6 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zonajuegos.ui.theme.ZonaJuegosTheme
+import android.media.MediaPlayer
+import androidx.core.content.edit
 
 
 class MainActivity : AppCompatActivity() {
@@ -59,6 +61,13 @@ class MainActivity : AppCompatActivity() {
 
         rvVideojuegos = findViewById(R.id.rvVideojuegos)
 
+        // Añadimos un juego inicial a la lista
+        listaVideojuegos.add(
+            Videojuego("The Legend of Zelda: Breath of the Wild", "Aventura", "Nintendo Switch")
+        )
+
+        cargarUltimoVideojuego()
+
         // Configuración del RecyclerView
         rvVideojuegos.layoutManager = LinearLayoutManager(this)
         adaptador = VideojuegoAdapter(listaVideojuegos) {
@@ -96,8 +105,12 @@ class MainActivity : AppCompatActivity() {
 
         listaVideojuegos.add(nuevoVideojuego)
 
+        guardarVideojuego(nuevoVideojuego)
+
         // Aviso para el adaptador sobre la inserción de un nuevo videojuego
         adaptador.notifyItemInserted(listaVideojuegos.lastIndex)
+
+        reproducirSonido()
 
         // Limpiamos el formulario para el próximo videojuego
         etTitulo.text.clear()
@@ -139,4 +152,67 @@ class MainActivity : AppCompatActivity() {
 
         startActivity(intent)
     }
+
+    private fun guardarVideojuego(videojuego: Videojuego) {
+
+        val preferencias = getSharedPreferences(
+            "ZonaJuegosGuardados",
+            MODE_PRIVATE
+        )
+
+        preferencias.edit {
+            putString("ultimo_titulo", videojuego.titulo)
+                .putString("ultimo_genero", videojuego.genero)
+                .putString("ultimo_plataforma", videojuego.plataforma)
+        }
+    }
+
+    private fun cargarUltimoVideojuego() {
+
+        val preferencias = getSharedPreferences(
+            "ZonaJuegosGuardados",
+            MODE_PRIVATE
+        )
+
+        val titulo = preferencias.getString("ultimo_titulo", null)
+
+        if (titulo != null) {
+
+            val genero = preferencias.getString(
+                "ultimo_genero",
+                "Aventura"
+            ) ?: "Aventura"
+
+            val plataforma = preferencias.getString(
+                "ultimo_plataforma",
+                "PC"
+            ) ?: "PC"
+
+            val videojuego = Videojuego(
+                titulo,
+                genero,
+                plataforma
+            )
+
+            listaVideojuegos.add(videojuego)
+        }
+    }
+
+    private fun reproducirSonido() {
+
+        val reproductor = MediaPlayer.create(
+            this,
+            R.raw.sonido_aniadir
+        )
+
+        if (reproductor != null) {
+            reproductor.setOnCompletionListener { mp ->
+                mp.release()
+            }
+
+            reproductor.start()
+        }
+    }
+
+
 }

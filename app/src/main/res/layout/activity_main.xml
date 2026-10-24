@@ -47,13 +47,23 @@
         android:id="@+id/btnAgregar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Añadir videojuego" />
+        android:text="Añadir videojuego"
+        android:background="@drawable/boton_aniadir"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:padding="12dp"/>
 
     <Button
         android:id="@+id/btnAcercaDe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Acerca de" />
+        android:text="Acerca de"
+        android:background="@drawable/boton_acerca_de"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:padding="12dp"/>
 
     <TextView
         android:layout_width="match_parent"
