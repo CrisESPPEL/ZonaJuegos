@@ -10,11 +10,12 @@
         android:id="@+id/tvTituloPrincipal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GameZone"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="ZonaJuegos"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="12dp" />
+        android:paddingTop="35dp"/>
 
     <EditText
         android:id="@+id/etTitulo"
