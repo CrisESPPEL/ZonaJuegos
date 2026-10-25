@@ -167,10 +167,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Cargamos solo el último videojuego con SharedPreferences
     private fun cargarUltimoVideojuego() {
 
         val preferencias = getSharedPreferences(
-            "ZonaJuegosGuardados",
+            "ZonaJuegosPref",
             MODE_PRIVATE
         )
 
@@ -198,6 +199,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Función para reproducir un sonido cuando añadimos un videojuego a la lista
     private fun reproducirSonido() {
 
         val reproductor = MediaPlayer.create(
