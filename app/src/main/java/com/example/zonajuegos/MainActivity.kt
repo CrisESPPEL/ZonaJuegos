@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
     private fun guardarVideojuego(videojuego: Videojuego) {
 
         val preferencias = getSharedPreferences(
-            "ZonaJuegosGuardados",
+            "ZonaJuegosPref",
             MODE_PRIVATE
         )
 
