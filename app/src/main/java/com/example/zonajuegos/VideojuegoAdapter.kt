@@ -1,5 +1,5 @@
 package com.example.zonajuegos
-
+// Prueba para el branch de la database
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
