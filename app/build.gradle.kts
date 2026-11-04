@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -57,4 +58,8 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.room:room-runtime:2.8.5")
+
+    ksp("androidx.room:room-compiler:2.8.5")
+
+
 }

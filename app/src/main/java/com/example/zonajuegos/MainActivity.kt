@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zonajuegos.ui.theme.ZonaJuegosTheme
 import android.media.MediaPlayer
 import androidx.core.content.edit
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +53,9 @@ class MainActivity : AppCompatActivity() {
         // Definimos la interfaz de MainActivity.kt en activity_main.xml
         setContentView(R.layout.activity_main)
 
+        database = VideojuegoDatabase.getDatabase(this)
+        videojuegoDao = database.videojuegoDao()
+
         // Enlazamos los componentes al XML correspondiente
         etTitulo = findViewById(R.id.etTitulo)
         etGenero = findViewById(R.id.etGenero)
@@ -62,11 +67,15 @@ class MainActivity : AppCompatActivity() {
         rvVideojuegos = findViewById(R.id.rvVideojuegos)
 
         // Añadimos un juego inicial a la lista
-        listaVideojuegos.add(
-            Videojuego("The Legend of Zelda: Breath of the Wild", "Aventura", "Nintendo Switch")
-        )
-
-        cargarUltimoVideojuego()
+        lifecycleScope.launch {
+            videojuegoDao.insertar(
+                Videojuego(
+                    titulo = "The Legend of Zelda: Breath of the Wild",
+                    genero = "Aventura",
+                    plataforma = "Nintendo Switch"
+                )
+            )
+        }
 
         // Configuración del RecyclerView
         rvVideojuegos.layoutManager = LinearLayoutManager(this)
@@ -79,6 +88,21 @@ class MainActivity : AppCompatActivity() {
         // Función del botón para añadir un videojuego
         btnAgregar.setOnClickListener {agregarVideojuego()}
 
+    }
+
+    // Función para consultar Room cada vez que se regresa a la pantalla principal
+    override fun onResume() {
+        super.onResume()
+
+        lifecycleScope.launch {
+            videojuegoDao.obtenerTodos().collect { videojuegos ->
+
+                listaVideojuegos.clear()
+                listaVideojuegos.addAll(videojuegos)
+
+                adaptador.notifyDataSetChanged()
+            }
+        }
     }
 
     // Función para agregar un videojuego a la lista
@@ -101,14 +125,17 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val nuevoVideojuego = Videojuego(titulo, genero, plataforma)
+        val nuevoVideojuego = Videojuego(
+            titulo = titulo,
+            genero = genero,
+            plataforma = plataforma
+        )
 
-        listaVideojuegos.add(nuevoVideojuego)
+        lifecycleScope.launch {
 
-        guardarVideojuego(nuevoVideojuego)
+            videojuegoDao.insertar(nuevoVideojuego)
 
-        // Aviso para el adaptador sobre la inserción de un nuevo videojuego
-        adaptador.notifyItemInserted(listaVideojuegos.lastIndex)
+        }
 
         reproducirSonido()
 
@@ -153,51 +180,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun guardarVideojuego(videojuego: Videojuego) {
-
-        val preferencias = getSharedPreferences(
-            "ZonaJuegosPref",
-            MODE_PRIVATE
-        )
-
-        preferencias.edit {
-            putString("ultimo_titulo", videojuego.titulo)
-                .putString("ultimo_genero", videojuego.genero)
-                .putString("ultimo_plataforma", videojuego.plataforma)
-        }
-    }
-
-    // Cargamos solo el último videojuego con SharedPreferences
-    private fun cargarUltimoVideojuego() {
-
-        val preferencias = getSharedPreferences(
-            "ZonaJuegosPref",
-            MODE_PRIVATE
-        )
-
-        val titulo = preferencias.getString("ultimo_titulo", null)
-
-        if (titulo != null) {
-
-            val genero = preferencias.getString(
-                "ultimo_genero",
-                "Aventura"
-            ) ?: "Aventura"
-
-            val plataforma = preferencias.getString(
-                "ultimo_plataforma",
-                "PC"
-            ) ?: "PC"
-
-            val videojuego = Videojuego(
-                titulo,
-                genero,
-                plataforma
-            )
-
-            listaVideojuegos.add(videojuego)
-        }
-    }
+    private lateinit var database: VideojuegoDatabase
+    private lateinit var videojuegoDao: VideojuegoDao
 
     // Función para reproducir un sonido cuando añadimos un videojuego a la lista
     private fun reproducirSonido() {
