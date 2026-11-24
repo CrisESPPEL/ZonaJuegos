@@ -24,12 +24,12 @@ Funcionamiento
 
 
 - Catálogo online: obtiene juegos desde `GET /games`, permite filtrar por plataforma/categoría y abrir el detalle con `GET /game?id=…`. Desde allí se añade el juego a la colección personal.
-- 
+  
   <img width="773" height="1311" alt="Captura de pantalla 2026-11-24 200734" src="https://github.com/user-attachments/assets/8801c349-6346-432d-a809-c0e2b42e779f" />
 
 
 - Colección: muestra los juegos guardados en Room, permite filtrar y abrir la ficha para cambiar su estado o registrar una partida.
-- 
+  
   <img width="781" height="1319" alt="Captura de pantalla 2026-11-24 200752" src="https://github.com/user-attachments/assets/401db5b6-7260-4d08-bca9-b56c2393d0b9" />
 
 
