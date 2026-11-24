@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     private var caratulaSeleccionada: Uri? = null
     private var ultimoId: Int? = null
 
-    /** La cámara externa escribe la foto en un URI privado concedido por FileProvider. */
+    /** La cámara externa escribe la foto en un URI privado concedido por FileProvider */
     private var uriFotoPendiente: Uri? = null
     private val tomarFoto = registerForActivityResult(ActivityResultContracts.TakePicture()) { guardada ->
         if (guardada && uriFotoPendiente != null) {
