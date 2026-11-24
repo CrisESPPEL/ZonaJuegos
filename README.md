@@ -13,17 +13,25 @@ Con FreeToGame se incorporó un catálogo de juegos free-to-play con filtros, im
 Funcionamiento
 
 - Alta manual: permite guardar título, género, plataforma, tiempo estimado y si se sabe que tiene logros. La carátula puede fotografiarse o elegirse de la galería.
+  
   <img width="780" height="1321" alt="Captura de pantalla 2026-11-24 200543" src="https://github.com/user-attachments/assets/2bc7ea88-2ede-48d1-920f-48d3bda1afb1" />
 
+
   Al hacer una foto se guarda como portada del juego después de incluirlo a la biblioteca
+  
   <img width="779" height="1316" alt="Captura de pantalla 2026-11-24 200601" src="https://github.com/user-attachments/assets/b81a2ae1-f3b4-4675-87d3-962630bd2dbf" />
   <img width="771" height="1308" alt="Captura de pantalla 2026-11-24 200643" src="https://github.com/user-attachments/assets/fa8ed4b2-8cb8-48df-bb59-a966a861b97f" />
 
+
 - Catálogo online: obtiene juegos desde `GET /games`, permite filtrar por plataforma/categoría y abrir el detalle con `GET /game?id=…`. Desde allí se añade el juego a la colección personal.
+- 
   <img width="773" height="1311" alt="Captura de pantalla 2026-11-24 200734" src="https://github.com/user-attachments/assets/8801c349-6346-432d-a809-c0e2b42e779f" />
 
+
 - Colección: muestra los juegos guardados en Room, permite filtrar y abrir la ficha para cambiar su estado o registrar una partida.
+- 
   <img width="781" height="1319" alt="Captura de pantalla 2026-11-24 200752" src="https://github.com/user-attachments/assets/401db5b6-7260-4d08-bca9-b56c2393d0b9" />
+
 
 - Recomendación por zona: al solicitarla, pide permiso de ubicación aproximada, intenta obtener una ubicación reciente o una nueva y muestra las coordenadas aproximadas. Si no hay ubicación o partidas cercanas, recomienda al azar un juego de la colección. La ubicación y las partidas se quedan en el dispositivo.
 - Modo sin conexión: la biblioteca siempre es local. El catálogo y sus detalles se pueden consultar offline cuando ya se habían guardado en Room; Glide mantiene su propia caché de imágenes.
