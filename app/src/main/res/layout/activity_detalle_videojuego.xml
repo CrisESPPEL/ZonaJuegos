@@ -1,60 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Ficha completa abierta desde la pantalla independiente de colección. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="24dp">
+    android:background="#F4F5FA"
+    android:fillViewport="true">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detalles del videojuego"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="20dp" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="22dp">
 
-    <ImageView
-        android:id="@+id/ivPortada"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@android:drawable/ic_media_play"
-        android:contentDescription="Imagen del videojuego"
-        android:scaleType="centerInside"
-        android:layout_marginBottom="20dp" />
+        <ImageView
+            android:id="@+id/ivPortada"
+            android:layout_width="190dp"
+            android:layout_height="260dp"
+            android:background="#E8E9F0"
+            android:contentDescription="Portada del juego"
+            android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/tvDetalleTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Título"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="12dp" />
+        <TextView
+            android:id="@+id/tvDetalleTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Título"
+            android:textColor="#20233A"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvDetalleGenero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Género"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
+        <!-- Cada campo opcional se rellena desde Room y queda oculto si está vacío. -->
+        <TextView
+            android:id="@+id/tvDetalleGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Género"
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/tvDetallePlataforma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Plataforma"
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/tvDetalleTiempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Tiempo para completar"
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/tvDetalleLogros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Logros"
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/tvDetallePartidas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Partidas registradas"
+            android:textSize="17sp" />
 
-    <TextView
-        android:id="@+id/tvDetallePlataforma"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plataforma"
-        android:textSize="18sp"
-        android:layout_marginBottom="20dp" />
+        <!-- El estado de progreso se puede cambiar en cualquier momento desde este desplegable. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:labelFor="@id/spEstadoJuego"
+            android:paddingStart="5dp"
+            android:text="Estado del juego"
+            android:textColor="#20233A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnVolverDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Volver" />
+        <Spinner
+            android:id="@+id/spEstadoJuego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="Cambiar estado del juego" />
 
-</LinearLayout>
+        <!-- El tráiler abre un reproductor externo, sin incrustar contenido remoto. -->
+        <Button
+            android:id="@+id/btnVerTrailer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Ver ficha online" />
+        <Button
+            android:id="@+id/btnVolverDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver a la colección" />
+    </LinearLayout>
+</ScrollView>

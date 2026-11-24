@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Información de la app y atribución de los datos del catálogo de FreeToGame. -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -11,13 +12,13 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@android:drawable/ic_menu_info_details"
-        android:contentDescription="Información de GameZone"
+        android:contentDescription="Información de ZonaJuegos"
         android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GameZone"
+        android:text="ZonaJuegos"
         android:textSize="28sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -26,10 +27,29 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aplicación para registrar videojuegos y consultar sus datos. Proyecto educativo de Programación Multimedia y Dispositivos Móviles."
+        android:text="Aplicación para registrar videojuegos, coleccionar carátulas y guardar partidas. Proyecto educativo de Programación Multimedia y Dispositivos Móviles."
         android:textSize="17sp"
         android:gravity="center"
         android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tvAtribucionFreeToGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Consultar FreeToGame y sus condiciones de uso"
+        android:textColor="#3478F6"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Datos del catálogo free-to-play: FreeToGame. Los juegos y sus imágenes pertenecen a sus titulares."
+        android:textColor="#60657B"
+        android:textSize="13sp" />
 
     <Button
         android:id="@+id/btnVolverAcercaDe"

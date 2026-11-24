@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Limita los URI que FileProvider puede compartir a las fotos privadas de carátulas. -->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-files-path
+        name="caratulas_fotografiadas"
+        path="Pictures/covers/" />
+    <!-- Ruta alternativa privada si Android no facilita almacenamiento externo. -->
+    <files-path name="caratulas_privadas" path="covers/" />
+</paths>

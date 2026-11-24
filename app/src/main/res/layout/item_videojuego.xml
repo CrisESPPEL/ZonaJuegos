@@ -1,47 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Tarjeta compartida: portada real cuando existe y símbolo del género como reserva. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contenedorTarjeta"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:padding="12dp"
-    android:layout_marginBottom="6dp"
+    android:layout_marginBottom="10dp"
     android:background="@drawable/fondo_tarjeta"
     android:clickable="true"
     android:focusable="true"
-    >
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
 
-    <ImageView
-        android:id="@+id/ivIconoItem"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@android:drawable/ic_menu_help"
-        android:contentDescription="Icono de categoría"
-        android:layout_marginEnd="12dp" />
+    <!-- Se superponen imagen y símbolo para no ocupar espacio extra en la lista. -->
+    <FrameLayout
+        android:layout_width="76dp"
+        android:layout_height="104dp"
+        android:layout_marginEnd="12dp">
+        <ImageView
+            android:id="@+id/ivPortadaItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Portada del videojuego"
+            android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/tvGeneroIcono"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EEEAFE"
+            android:gravity="center"
+            android:text="🎮"
+            android:textSize="30sp" />
+    </FrameLayout>
 
+    <!-- Nombre, clasificación y datos de juego se mantienen legibles en pantallas estrechas. -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
-
         <TextView
             android:id="@+id/tvTituloItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Título del videojuego"
-            android:textSize="18sp"
+            android:textColor="#252841"
+            android:textSize="17sp"
             android:textStyle="bold" />
-
         <TextView
             android:id="@+id/tvDescripcionItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Género · Plataforma"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp" />
-
+            android:textColor="#5E6378"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvMetaItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="#73788D"
+            android:textSize="12sp" />
     </LinearLayout>
-
 </LinearLayout>
