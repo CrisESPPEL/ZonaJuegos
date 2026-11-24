@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La biblioteca ofrece filtros en vivo y muestra todas las fichas guardadas en Room. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5FA"
+    android:orientation="vertical"
+    android:padding="18dp">
+
+    <Button
+        android:id="@+id/btnVolverColeccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="‹ Inicio" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Mi colección"
+        android:textColor="#20233A"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCantidadJuegos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="0 juegos"
+        android:textColor="#686D82" />
+
+    <!-- Ambos campos pueden combinarse; una cadena vacía no limita la búsqueda. -->
+    <EditText
+        android:id="@+id/etFiltroGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Filtrar por género"
+        android:inputType="textCapWords"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/etFiltroPlataforma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Filtrar por plataforma"
+        android:inputType="textCapWords"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/tvSinResultados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="18dp"
+        android:text="No hay juegos que coincidan con esos filtros."
+        android:textColor="#686D82"
+        android:visibility="gone" />
+
+    <!-- La altura restante pertenece a la lista; sus tarjetas incluyen la portada. -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvColeccion"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+</LinearLayout>

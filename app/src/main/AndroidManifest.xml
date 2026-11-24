@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Internet permite consultar FreeToGame y descargar portadas desde sus URL HTTPS. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- La ubicación aproximada se solicita solo al pedir una recomendación local. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,15 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZonaJuegos">
         <activity
-            android:name=".AcercaDeActivity"
+            android:name=".ui.AcercaDeActivity"
+            android:exported="false" />
+
+        <!-- Pantalla de biblioteca separada del formulario de alta. -->
+        <activity android:name=".ui.ColeccionActivity" android:exported="false" />
+        <activity android:name=".ui.CatalogoActivity" android:exported="false" />
+        <activity android:name=".ui.DetalleCatalogoActivity" android:exported="false" />
+        <!-- El GPS solo se consulta al pedir una recomendación en esta pantalla. -->
+        <activity android:name=".ui.RecomendacionActivity" android:exported="false" />
+
+        <activity
+            android:name=".ui.DetalleVideojuegoActivity"
             android:exported="false" />
 
         <activity
-            android:name=".DetalleVideojuegoActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
 
             <intent-filter>
@@ -29,6 +41,17 @@
             </intent-filter>
 
         </activity>
+
+        <!-- Comparte con la cámara una ruta privada donde guardar la foto tomada. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
 

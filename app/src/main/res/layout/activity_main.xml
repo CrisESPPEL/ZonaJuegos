@@ -1,84 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Inicio contiene el formulario de alta; la biblioteca completa vive en otra pantalla. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:fillViewport="true"
+    android:background="#F4F5FA">
 
-    <TextView
-        android:id="@+id/tvTituloPrincipal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:gravity="center"
-        android:text="ZonaJuegos"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:paddingTop="35dp"/>
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <EditText
-        android:id="@+id/etTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre del videojuego"
-        android:inputType="textCapWords"
-        android:maxLines="1"
-        android:layout_marginBottom="6dp" />
+        <!-- Cabecera con título y contexto de la aplicación. -->
+        <TextView
+            android:id="@+id/tvTituloPrincipal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ZonaJuegos"
+            android:textColor="#20233A"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/etGenero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Género: aventura, carreras..."
-        android:inputType="textCapWords"
-        android:maxLines="1"
-        android:layout_marginBottom="6dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:text="Tu colección, ordenada a tu manera"
+            android:textColor="#676C82"
+            android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/etPlataforma"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Plataforma: PC, PlayStation..."
-        android:inputType="textCapWords"
-        android:maxLines="1"
-        android:layout_marginBottom="8dp" />
+        <!-- El último registro se carga desde Room y abre la ficha al tocarlo. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="AÑADIDO RECIENTEMENTE"
+            android:textColor="#666B80"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Añadir videojuego"
-        android:background="@drawable/boton_aniadir"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:padding="12dp"/>
+        <LinearLayout
+            android:id="@+id/cardUltimoJuego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:background="@drawable/fondo_tarjeta"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="105dp"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
-    <Button
-        android:id="@+id/btnAcercaDe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Acerca de"
-        android:background="@drawable/boton_acerca_de"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:padding="12dp"/>
+            <FrameLayout
+                android:layout_width="68dp"
+                android:layout_height="92dp"
+                android:layout_marginEnd="14dp">
+                <ImageView
+                    android:id="@+id/ivUltimoJuego"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Portada del último juego añadido"
+                    android:scaleType="centerCrop" />
+                <TextView
+                    android:id="@+id/tvIconoUltimoJuego"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#EEEAFE"
+                    android:gravity="center"
+                    android:text="🎮"
+                    android:textSize="30sp" />
+            </FrameLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mi biblioteca"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvUltimoJuego"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aún no has añadido ningún juego"
+                    android:textColor="#252841"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvDetalleUltimoJuego"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Tus nuevas incorporaciones aparecerán aquí"
+                    android:textColor="#686D82"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvVideojuegos"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <!-- Formulario de alta; solo el título es obligatorio. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="AÑADIR A LA COLECCIÓN"
+            android:textColor="#666B80"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Nombre del juego *"
+            android:inputType="textCapWords"
+            android:maxLines="1" />
+
+        <AutoCompleteTextView
+            android:id="@+id/etGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:completionThreshold="1"
+            android:hint="Género, por ejemplo aventura"
+            android:inputType="textCapWords"
+            android:maxLines="1" />
+
+        <AutoCompleteTextView
+            android:id="@+id/etPlataforma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:completionThreshold="1"
+            android:hint="Plataforma"
+            android:inputType="textCapWords"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/etTiempoCompletar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:hint="Tiempo para completar, por ejemplo 25 h (opcional)"
+            android:inputType="textCapSentences"
+            android:maxLines="1" />
+
+        <CheckBox
+            android:id="@+id/cbTieneLogros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Este juego tiene logros" />
+
+        <!-- La cámara toma una foto privada; la galería selecciona una carátula existente. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnFotoCamara"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:text="📷 Hacer foto" />
+            <Button
+                android:id="@+id/btnElegirGaleria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:text="🖼 Elegir carátula" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvEstadoCaratula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Portada automática al añadir desde el catálogo online"
+            android:textColor="#686D82"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnAgregar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_aniadir"
+            android:padding="12dp"
+            android:text="Añadir juego"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <!-- Accesos de navegación fuera del formulario para mantener cada tarea separada. -->
+        <Button
+            android:id="@+id/btnColeccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Ver juegos de la colección" />
+
+        <Button
+            android:id="@+id/btnCatalogoOnline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Explorar catálogo free-to-play" />
+
+        <Button
+            android:id="@+id/btnRecomendacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Juego más jugado en mi zona" />
+
+        <Button
+            android:id="@+id/btnAcercaDe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/boton_acerca_de"
+            android:text="Acerca de"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>

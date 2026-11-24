@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Explora FreeToGame; el contenido visible procede de Room y se refresca por Internet. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5FA"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btnVolverCatalogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="‹ Inicio" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Catálogo free-to-play"
+        android:textColor="#20233A"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spPlataformaCatalogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/etCategoriaCatalogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Filtrar género, por ejemplo shooter"
+        android:inputType="textCapWords"
+        android:maxLines="1" />
+
+    <Button
+        android:id="@+id/btnBuscarCatalogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar / actualizar catálogo" />
+
+    <ProgressBar
+        android:id="@+id/pbCatalogo"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvEstadoCatalogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:text="Conectando con FreeToGame…"
+        android:textColor="#62677C" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCatalogo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+</LinearLayout>

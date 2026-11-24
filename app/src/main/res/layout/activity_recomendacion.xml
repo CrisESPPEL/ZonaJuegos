@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sugiere un juego con partidas locales cercanas o recurre a uno aleatorio. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5FA"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="22dp">
+
+    <Button
+        android:id="@+id/btnVolverRecomendacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="‹ Inicio" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Descubre qué jugar"
+        android:textColor="#20233A"
+        android:textSize="27sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvExplicacionZona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Con tu permiso, buscaremos juegos que hayas marcado como jugados cerca de ti. Si no hay registros, elegiremos uno al azar."
+        android:textColor="#62677C"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnBuscarJuegoZona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar recomendación" />
+
+    <TextView
+        android:id="@+id/tvUbicacionRecomendacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="La ubicación solo se consultará al pedir una recomendación."
+        android:textColor="#62677C"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/ivRecomendacion"
+        android:layout_width="190dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="24dp"
+        android:background="#E8E9F0"
+        android:contentDescription="Portada del juego recomendado"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvJuegoRecomendado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textColor="#20233A"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvMotivoRecomendacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:textColor="#62677C"
+        android:textSize="14sp" />
+</LinearLayout>
